@@ -8,6 +8,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { useSession } from "next-auth/react";
 function page() {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
@@ -16,7 +17,7 @@ function page() {
   const [uploading, setUploading] = useState(false);
   const [open, setOpen] = useState(false);
   const [id, setId] = useState("");
-
+  const {data: session} = useSession();
   const toggleModal = () => {
     setOpen(true);
   };
@@ -37,8 +38,10 @@ function page() {
   return (
     <div className="block">
             <Navbar />
-
-      <div className="flex justify-center">
+      {
+        session ? (
+          <>
+          <div className="flex justify-center">
         <div className="flex justify-between w-full mx-[40px] mt-[90px]">
           <MetricCard title="Ad clicks" metric="12" colour="red" />
           <MetricCard title="Pending orders" metric="14" colour="yellow" />
@@ -66,6 +69,18 @@ function page() {
           </div>
         </div>
       </div>
+          </>
+
+      
+        ):(
+          <div>
+          <p>Sorry you have to be logged in to access this route</p>
+
+          </div>
+
+        )
+      }
+      
     </div>
   );
 }

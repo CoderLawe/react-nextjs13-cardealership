@@ -12,6 +12,10 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { FetchedCarsContext } from "@/components/context/CarCardContext";
 import { useSession } from "next-auth/react";
+import { AiOutlineClockCircle } from "react-icons/ai";
+import { BsFillFuelPumpFill } from "react-icons/bs";
+import { VscGear } from "react-icons/vsc";
+
 function cars() {
   const [cars, setCars] = useContext(FetchedCarsContext);
   const [make, setMake] = useState("");
@@ -34,11 +38,16 @@ function cars() {
     };
 
     getCars();
-  }, []);
+  }, [cars]);
 
   const toggleModal = () => {
     setOpen(true);
   };
+
+  useEffect(() => {
+    console.log("Images", images);
+  }, [images]);
+  
 
   const handleImageUpload = async (e) => {
     const files = e.target.files;
@@ -69,13 +78,17 @@ function cars() {
     try {
       setUploading(true);
       const carRef = await addDoc(collection(db, "cars"), {
+        type,
         make,
         model,
         year,
         images,
+        transmission,
+        mileage,
+        price,
         username:session.user.username,
         id: uuidv4(),
-        timestamp:serverTimestamp(),
+        // timestamp:Date.now()
 
       });
       console.log("Car added with images:", carRef.images);
@@ -108,13 +121,79 @@ function cars() {
             {car.make} {car.model}
           </p>
         ))} */}
-      </div>
 
+    <p className="text-[32px] font-serif font-[500] text-center">My Ads</p>
       { 
         cars.filter((car) => car.username === session?.user.username).map((filteredCar) => (
-            <p>{filteredCar.make} {filteredCar.model}</p>
-        ))
+            <div key={filteredCar.id} className="grid grid-cols-3 w-[70%] mx-auto">
+            <div className="block">
+                <div className="relative">
+                
+                    <img  className="h-[218.08px] w-[332.66px] object-cover cursor-pointer" src={filteredCar.images[0]}/>
+    
+    
+                <div className="bg-[#262626] absolute bottom-[4px] left-[8px] h-[25px] w-[179.86px] flex justify-between items-center rounded-[6px]">
+                    {/* Left side */}
+                    <div className="flex space-x-[4px] items-center ml-[8px]">
+                        <AiOutlineClockCircle className="h-[11px] w-[11px] text-gray-400" />
+                        <p className="text-[13px] text-white font-[500]">{filteredCar.type}</p>
+    
+                    </div>
+    
+    
+                    {/* Right side */}
+    
+                    <div className="mr-[7.85px]">
+                        <p className="text-[14px] text-white font-[500]">BIF {filteredCar.price}</p>
+                    </div>
+    
+                </div>
+    
+                
+            </div>
+    
+    
+            <div className="block">
+                {/* Bottom details */}
+                
+                <p className="text-[16px] font-[700] text-[#262626] mt-[15px]">{filteredCar.make} {filteredCar.model}</p>
+    
+                <div className="flex space-x-[6.89px]">
+                    <div className="bg-[#5CA1FF] rounded-[4px] h-[19px] w-[73.39px] text-center pt-[2px] text-white text-[10px]">New</div>
+                    <p className="text-[#262626] text-[14px] font-[400]">{filteredCar.mileage} Kms</p>
+    
+                </div>
+    
+                <div className="flex items-center mt-[10px] space-x-[12px]">
+    
+                    <div className="mt-[4px] flex items-center space-x-[8px]">
+                        <VscGear className="text-gray-500 text-[20px]"/>
+                        <p className="text-[#262626] text-[14px] font-[600]"></p>
+                    </div>
+    
+                    <div className="flex items-center space-x-[8px]">
+                        <BsFillFuelPumpFill className="text-red-600 text-[20px]"/>
+                        <p className="text-[#262626] text-[14px] font-[600]">Fuel type</p>
+    
+    
+                    </div>
+    
+                </div>
+    
+    
+                <Link href={`/${id}`}>
+                    <button  className=" h-[40px] w-[332.66px]  text-[#F75D34] bg-white border border-[#F75D34] text-[12px] mt-[16px] cursor-pointer hover:bg-[#F75D34] hover:text-gray-100 transform transition-all duration-300 ease-out">More Details</button>
+    
+                </Link>
+    
+            </div>
+        </div>     
+        </div>       
+            ))
       }
+
+    </div>
+
       <button onClick={toggleModal}>Add Car</button>
 
       {open && (
