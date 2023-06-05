@@ -12,6 +12,7 @@ import {
   CardIdContext,
 } from "@/components/context/CarCardContext";
 import DetailGallery from "@/components/DetailGallery";
+import Navbar from "@/components/Navbar";
 
 function page() {
   const [carId, setCarId] = useContext(CardIdContext);
@@ -38,7 +39,7 @@ function page() {
   }, []);
   return (
     <div>
-      {" "}
+      <Navbar />{" "}
       <DetailGallery
         car={carData}
         make={carData.make}

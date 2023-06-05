@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import CarCardMain from './CarCardMain';
 import Filters from './Filters';
+import FiltersNew from "./FiltersNew";
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firestore';
 import { FetchedCarsContext } from './context/CarCardContext';
@@ -24,7 +25,9 @@ function CarCardsMain() {
       {/* Title and filters */}
       <div className="block space-y-[8px]">
         <p className="text-gray-900 text-[24px] font-[700]">Arrivals</p>
-        <Filters />
+        {/* <Filters /> */}
+
+        <FiltersNew />
       </div>
       <div className="grid lg:grid-cols-3 gap-x-[28px] gap-y-[44.01px] mt-[30px]">
         

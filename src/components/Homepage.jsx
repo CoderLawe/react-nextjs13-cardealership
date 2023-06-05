@@ -8,7 +8,7 @@ import Navbar from './Navbar'
 function Homepage() {
   return (
     <div>
-      <Navbar />
+      <Navbar link="/"/>
         <Hero/>
         <CardSection />
         <CarCardsMain />

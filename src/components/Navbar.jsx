@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { GiCarKey } from "react-icons/gi";
-const Navbar = () => {
+const Navbar = ({ link }) => {
   const { data: session } = useSession()
 
  
@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-[8px]">
               <GiCarKey className="text-[#F75D34] text-[32px]" />
-            <Link href="/" className="text-white font-bold text-2xl cursor-pointer">
+            <Link href={`${link}`} className="text-white font-bold text-2xl cursor-pointer">
               SosahMotors
             </Link>
 
