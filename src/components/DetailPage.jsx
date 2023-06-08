@@ -39,12 +39,18 @@ function DetailPage() {
   }, []);
 
   return (
-    <div> <Navbar />
-    <DetailGallery
+    <div>
+             <Navbar />
+
+      {carData && (
+        <DetailGallery
       car={carData}
       make={carData.make}
       images={carData.images}
-    /></div>
+    />
+      )}
+    
+    </div>
   )
 }
 
