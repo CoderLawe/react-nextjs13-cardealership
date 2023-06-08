@@ -12,7 +12,6 @@ import {
 } from "@/components/context/CarCardContext";
 import DetailGallery from "@/components/DetailGallery";
 import Navbar from "@/components/Navbar";
-import DetailPage from "../components/DetailPage";
 
 
 function DetailPage() {
