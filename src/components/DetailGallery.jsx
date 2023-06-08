@@ -20,7 +20,7 @@ function DetailGallery({ car }) {
 
         {/* Left side */}
         <div className="w-[800px] block">
-          <img className="object-cover h-[500px] w-[100%]" src={selectedImage} alt="Selected Image" />
+          <img className="object-cover h-[500px] w-[full]  lg:h-[500px] lg:w-[100%]" src={selectedImage} alt="Selected Image" />
   
           <div className=" flex-col bg-white">
             <div className="flex space-x-[15px] pt-[20px] overflow-x-scroll">

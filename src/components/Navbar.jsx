@@ -89,9 +89,9 @@ const Navbar = ({ link }) => {
       </nav>
 
             {/* Small screen Navbar */}
-      <nav className="flex justify-between lg:hidden bg-gray-900 py-[10px] px-[5px] fixed z-[50] w-[100%]">
-              <Image className="" src="https://cdn.discordapp.com/attachments/839784544798638090/1116281663857631233/gurex__logo_transparent.png" height={50} width={50}/>
-              <AiOutlineMenu className="text-gray-200 text-[32px]"/>
+      <nav className="flex items-center justify-between lg:hidden bg-gray-900 py-[16px] px-[5px] fixed z-[50] w-[100%]">
+              <Image className="" src="https://cdn.discordapp.com/attachments/839784544798638090/1116281663857631233/gurex__logo_transparent.png" height={30} width={30}/>
+              <AiOutlineMenu className="text-gray-200 text-[30px]"/>
       </nav>
     </div>
     
