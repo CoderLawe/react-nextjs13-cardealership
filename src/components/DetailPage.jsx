@@ -37,9 +37,9 @@ function DetailPage() {
   //       };
   // }, []);
 
-  useEffect(() => {
-    console.log("help me", carData);
-  }, []);
+  // useEffect(() => {
+  //   console.log("help me", carData);
+  // }, []);
 
   return (
     <div>
