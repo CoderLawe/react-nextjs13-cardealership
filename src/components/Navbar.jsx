@@ -1,5 +1,6 @@
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import Image from "next/image";
 import React, { useEffect } from "react";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { BsMenuButton } from "react-icons/bs";
@@ -88,7 +89,8 @@ const Navbar = ({ link }) => {
       </nav>
 
             {/* Small screen Navbar */}
-      <nav className="flex justify-between lg:hidden bg-gray-900 py-[10px] px-[5px] fixed">
+      <nav className="flex justify-between lg:hidden bg-gray-900 py-[10px] px-[5px] fixed z-[50] w-[100%]">
+              <Image className="" src="https://cdn.discordapp.com/attachments/839784544798638090/1116281663857631233/gurex__logo_transparent.png" height={50} width={50}/>
               <AiOutlineMenu className="text-gray-200 text-[32px]"/>
       </nav>
     </div>

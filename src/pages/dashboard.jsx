@@ -10,17 +10,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
 function page() {
-  const [make, setMake] = useState("");
-  const [model, setModel] = useState("");
-  const [year, setYear] = useState("");
-  const [images, setImages] = useState([]);
-  const [uploading, setUploading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const [id, setId] = useState("");
-  const {data: session} = useSession();
-  const toggleModal = () => {
-    setOpen(true);
-  };
+ 
   // const handleImageUpload = async (e) => {
   //   const file = e.target.files[0];
   //   const storageRef = ref(storage);
@@ -38,48 +28,8 @@ function page() {
   return (
     <div className="block">
             <Navbar />
-      {
-        session ? (
-          <>
-          <div className="flex justify-center">
-        <div className="flex justify-between w-full mx-[40px] mt-[90px]">
-          <MetricCard title="Ad clicks" metric="12" colour="red" />
-          <MetricCard title="Pending orders" metric="14" colour="yellow" />
-          <MetricCard title="Total orders" metric="14" colour="blue" />
-        </div>
-      </div>
-
-      <div className="flex justify-between bg-white mt-[40px] mx-[40px]">
-        {/* Bottom Left */}
-        <DashboardChart />
-
-        {/* Bottom Right */}
-
-        <div className="flex space-x-[10px]">
-          <Link href="/cars">
-            <button className="h-[50px] px-[5px] py-[7px] rounded-[8px] bg-black text-white font-[400]">
-              My Cars
-            </button>
-          </Link>
-        </div>
-
-        <div className="block w-[500px]">
-          <div className="flex justify-center">
-            <button onClick={toggleModal}>Add Car</button>
-          </div>
-        </div>
-      </div>
-          </>
-
-      
-        ):(
-          <div>
-          <p>Sorry you have to be logged in to access this route</p>
-
-          </div>
-
-        )
-      }
+     
+     <DashboardHome />
       
     </div>
   );
