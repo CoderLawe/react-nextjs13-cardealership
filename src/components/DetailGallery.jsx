@@ -6,7 +6,7 @@ import { TbManualGearbox } from "react-icons/tb";
 function DetailGallery({ car }) {
 
 
-    const [selectedImage, setSelectedImage] = useState(car.images[0]);
+    const [selectedImage, setSelectedImage] = useState(car? car.images[0]:null);
 
     const [counter, setCounter] = useState()
     const handleImageClick = (image) => {
@@ -19,7 +19,7 @@ function DetailGallery({ car }) {
       <div className=" px-[24px] pt-[100px] block lg:flex bg-gray-100">
 
         {/* Left side */}
-        <div className="w-[800px] block">
+        <div className="lg:w-[800px] block">
           <img className="object-cover h-[500px] w-[full]  lg:h-[500px] lg:w-[100%]" src={selectedImage} alt="Selected Image" />
   
           <div className=" flex-col bg-white">
