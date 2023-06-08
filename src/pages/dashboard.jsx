@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
+import DashboardHome from "../components/DashboardHome";
 function page() {
  
   // const handleImageUpload = async (e) => {

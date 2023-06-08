@@ -1,4 +1,3 @@
-import React from 'react'
 import DashboardChart from "@/components/DashboardChart";
 import MetricCard from "@/components/MetricCard";
 import React, { useState, useEffect } from "react";

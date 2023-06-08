@@ -16,7 +16,7 @@ function DetailGallery({ car }) {
 
 
     return (
-      <div className=" px-[24px] pt-[100px] flex bg-gray-100">
+      <div className=" px-[24px] pt-[100px] block lg:flex bg-gray-100">
 
         {/* Left side */}
         <div className="w-[800px] block">
@@ -79,9 +79,9 @@ function DetailGallery({ car }) {
 
         {/* Right side */}
 
-        <div className="ml-[40px] block space-y-[20px]">
+        <div className="lg:ml-[40px] block space-y-[20px] ">
           {/* Top card */}
-          <div className="rounded-[4px] shadow-lg flex justify-center  h-[150px] w-[400px] pt-[20px] bg-white">
+          <div className="rounded-[4px] lg:shadow-lg flex justify-center  h-[150px] w-[400px] pt-[20px] bg-white">
               <div className="block">
                 <p className="text-gray-900 text-[32px] font-semibold whitespace-nowrap text-center">BiF {car.price}</p>
 
@@ -93,7 +93,7 @@ function DetailGallery({ car }) {
 
 
               {/* Bottom card */}
-          <div className="rounded-[4px] lg:w-[400px]  block shadow-lg pt-[10px] pb-[15px] px-[8px] bg-white">
+          <div className="rounded-[4px] lg:w-[400px]  block lg:shadow-lg pt-[10px] pb-[15px] px-[8px] bg-white">
               <div className="flex justify-center space-x-[10px] items-center">
                   <img className="w-[50px] h-[50px] rounded-[100%] object-cover" src="https://cdn.discordapp.com/attachments/817048198022430761/1105767736648421426/IMG_20230429_064010_723.jpg" alt="Profile img"/>
                   <div className="block space-y-[8px] align-middle">
