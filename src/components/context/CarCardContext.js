@@ -13,7 +13,7 @@ export const FilteredCarsContext = createContext();
 export const TypingContext = createContext();
 export const CarCardProvider = ({ children }) => {
   const [carId, setCarId] = useState(0);
-  const [carData, setCarData] = useState({});
+  const [carData, setCarData] = useState({ images: ["src1", "src2"] });
   const [cars, setCars] = useState([]);
 
   // Filters

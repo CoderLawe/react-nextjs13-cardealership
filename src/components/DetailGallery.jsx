@@ -3,10 +3,10 @@ import { AiOutlineCheckCircle, AiOutlineClockCircle } from 'react-icons/ai';
 import { BsFillPinFill } from 'react-icons/bs';
 import { TbManualGearbox } from "react-icons/tb";
 
-function DetailGallery({ car }) {
+function DetailGallery({ car, images }) {
 
 
-    const [selectedImage, setSelectedImage] = useState(car? car.images[0]:null);
+    const [selectedImage, setSelectedImage] = useState(images?images[0]:"");
 
     const [counter, setCounter] = useState()
     const handleImageClick = (image) => {
@@ -24,7 +24,7 @@ function DetailGallery({ car }) {
   
           <div className=" flex-col bg-white">
             <div className="flex space-x-[15px] pt-[20px] overflow-x-scroll">
-              {car.images.map((image, index) => (
+              {car?.images.map((image, index) => (
                 <img
                   key={index}
                   src={image}
