@@ -19,20 +19,23 @@ function DetailPage() {
   const [car, setCar] = useState({});
   const [carData, setCarData] = useContext(CarDataContext);
 
-  useEffect(() => {
-    const getData = async (carId) => {
-      const carSnapshot = await getDoc(doc(db, "cars", carId));
-      if (carSnapshot.exists()) {
-        setCar(carSnapshot.data());
-      } else {
-        console.log("Note doesn't exist");
-      }
-    };
+  // useEffect(() => {
+    
+  //   const getData = async (carId) => {
+  //     const carSnapshot = await getDoc(doc(db, "cars", carId));
+  //     if (carSnapshot.exists()) {
+  //       setCar(carSnapshot.data());
+  //     } else {
+  //       console.log("Car doesn't exist");
+  //     }
+  //   };
 
-    return () => {
-      getData();
-    };
-  }, []);
+  //   return () => {
+  //     if(carData){
+  //       getData()
+  //     }
+  //       };
+  // }, []);
 
   useEffect(() => {
     console.log("help me", carData);
@@ -40,7 +43,7 @@ function DetailPage() {
 
   return (
     <div>
-             <Navbar />
+        <Navbar />
 
       {carData && (
         <DetailGallery
