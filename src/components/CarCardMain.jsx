@@ -20,7 +20,7 @@ function CarCardMain({type, title, image, price, fuel, mileage, transmission, id
         setCarData({type, title, image, price, fuel, mileage, transmission, id, model, images})
       };
   return (
-    <div className="block">
+    <div className="block shadow-lg rounded-[18px] px-3 py-5">
         <div className="relative">
             
             <Link href={`/${id}`}>
