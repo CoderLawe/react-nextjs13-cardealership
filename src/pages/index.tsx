@@ -13,11 +13,7 @@ export default function Home() {
   return (
   <div>
     <Homepage />
-    {/* <Navbar />
-      <Hero />
-      <CardSection />
-      <CarCardsMain />
-      <Newsletter /> */}
+   
 
 </div>
   )

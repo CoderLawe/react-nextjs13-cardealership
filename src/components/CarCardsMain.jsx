@@ -43,9 +43,9 @@ const [searching, setSearching] = useContext(SearchingContext);
         {/* Title and filters */}
         <div className="block space-y-[8px]">
           <p className="text-gray-900 text-[24px] font-[700]">Arrivals</p>
-          {/* <Filters /> */}
+          <Filters />
 
-          <FiltersNew />
+          {/* <FiltersNew /> */}
         </div>
         <div className="grid lg:grid-cols-3 gap-x-[28px] gap-y-[44.01px] mt-[30px]">
           

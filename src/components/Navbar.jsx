@@ -17,9 +17,9 @@ const Navbar = ({ link }) => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center space-x-[8px]">
-                <GiCarKey className="text-[#F75D34] text-[32px]" />
-              <Link href={`${link}`} className="text-white font-bold text-2xl cursor-pointer">
-                SosahMotors
+            <Image className="bg-white rounded-full" src="https://cdn.discordapp.com/attachments/839784544798638090/1116281663857631233/gurex__logo_transparent.png" height={50} width={50} />
+              <Link href={`${link}`} className="text-yellow-400 font-bold text-2xl cursor-pointer">
+                Gurex
               </Link>
 
             </div>
@@ -27,8 +27,8 @@ const Navbar = ({ link }) => {
 
           {/* Search bar */}
             <div className="flex items-center space-x-[8px]">
-              <input className="w-[200px] px-2 bg-gray-100 text-black font-serif rounded-[4px]" placeholder="Search for your dream car!"/>
-              <AiOutlineSearch className="text-white" />
+              <input  placeholder="Search for anything you need" className="p-2 px-5 h-full width-6 flex-grow rounded flex-shrink rounded-l-md focus:outline-none" type="text" />
+                    <AiOutlineSearch className="h-12 p-4 text-white"/>
             </div>
             <div className="flex">
               <a
@@ -89,9 +89,9 @@ const Navbar = ({ link }) => {
       </nav>
 
             {/* Small screen Navbar */}
-      <nav className="flex items-center justify-between lg:hidden bg-gray-900 py-[16px] px-[5px] fixed z-[50] w-[100%]">
-              <Image className="" src="https://cdn.discordapp.com/attachments/839784544798638090/1116281663857631233/gurex__logo_transparent.png" height={30} width={30}/>
-              <AiOutlineMenu className="text-gray-200 text-[30px]"/>
+      <nav className="flex items-center justify-between lg:hidden bg-black py-[16px] px-[5px] fixed z-[50] w-[100%]">
+            <Image className="bg-white rounded-full" src="https://cdn.discordapp.com/attachments/839784544798638090/1116281663857631233/gurex__logo_transparent.png" height={50} width={50} />
+              <AiOutlineMenu className="text-gray-200 text-[50px]"/>
       </nav>
     </div>
     
