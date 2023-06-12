@@ -5,7 +5,8 @@ import Newsletter from './Newsletter'
 import Hero from './Hero'
 import Navbar from './Navbar'
 import Categories from "./Categories"
-import MainCarousel from './MainCarousel'
+import MainCarousel from './MainCarousel';
+import ElectronicsCardsMain from "./ElectronicsCardsMain";
 function Homepage() {
   return (
     <div>
@@ -15,6 +16,7 @@ function Homepage() {
         <Categories />
         <CardSection />
         <CarCardsMain />
+        <ElectronicsCardsMain />
         <Newsletter />
     </div>
   )

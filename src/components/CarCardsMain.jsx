@@ -53,13 +53,14 @@ const [searching, setSearching] = useContext(SearchingContext);
           !searching ?
           cars?.map((car) => (
             <CarCardMain
-              key={car.id} // Remember to provide a unique key for each item in the list
+              key={car.id}
               title={car.make}
               model={car.model}
               transmission={car.transmission}
               year={car.year}
               mileage={car.mileage}
               image={car.image}
+              fuel={car.fuel}
               images={car.images}
               type={car.type}
               price={car.price}
