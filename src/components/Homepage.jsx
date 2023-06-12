@@ -5,11 +5,13 @@ import Newsletter from './Newsletter'
 import Hero from './Hero'
 import Navbar from './Navbar'
 import Categories from "./Categories"
+import MainCarousel from './MainCarousel'
 function Homepage() {
   return (
     <div>
       <Navbar link="/"/>
-        <Hero/>
+        {/* <Hero/> */}
+        <MainCarousel />
         <Categories />
         <CardSection />
         <CarCardsMain />

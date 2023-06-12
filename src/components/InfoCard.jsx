@@ -23,7 +23,7 @@ const carTypeOptions = [
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedType, setSelectedType] = useState(null);
   return (
-    <div className="bg-white pb-[45px] w-[348px] z-[20] absolute bottom-[40px] lg:top-[60px] left-[30px] rounded-[8px] block ">
+    <div className="bg-white max-h-[420px] w-[348px] z-[20] absolute bottom-[40px] lg:top-[60px] left-[30px] rounded-[8px] block ">
         
         {/* Top card */}
         <p className="text-[#24272C] text-[30px] font-[700] ml-[20px] mr-[78.06px] mt-[21px]">Find the right car!</p>
@@ -45,7 +45,7 @@ const carTypeOptions = [
 
             <div className="flex space-x-[8px] items-center">
                 <input className="h-[18px] w-[18px] outline-none" active type='radio'/>
-                <p className="text-[#24272CB2] text-[16px] font-[500]">By Budget</p>
+                <p className="text-[#24272CB2] text-[16px] font-[500]">By Make</p>
             </div>
             
         </div>

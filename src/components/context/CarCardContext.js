@@ -11,6 +11,8 @@ export const PriceRangeFilterContext = createContext();
 export const SearchingContext = createContext();
 export const FilteredCarsContext = createContext();
 export const TypingContext = createContext();
+export const SelectedCategoryContext = createContext();
+
 export const CarCardProvider = ({ children }) => {
   const [carId, setCarId] = useState(0);
   const [carData, setCarData] = useState({ images: ["src1", "src2"] });
@@ -25,6 +27,7 @@ export const CarCardProvider = ({ children }) => {
   const [searching, setSearching] = useState(false);
   const [filteredCars, setFilteredCars] = useState([]);
   const [typing, setTyping] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("cars");
 
   return (
     <CardIdContext.Provider value={[carId, setCarId]}>
@@ -41,7 +44,11 @@ export const CarCardProvider = ({ children }) => {
                       value={[filteredCars, setFilteredCars]}
                     >
                       <TypingContext.Provider value={[typing, setTyping]}>
-                        {children}
+                        <SelectedCategoryContext.Provider
+                          value={[selectedCategory, setSelectedCategory]}
+                        >
+                          {children}
+                        </SelectedCategoryContext.Provider>
                       </TypingContext.Provider>
                     </FilteredCarsContext.Provider>
                   </SearchingContext.Provider>

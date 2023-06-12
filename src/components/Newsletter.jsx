@@ -76,10 +76,10 @@ function Newsletter() {
                     <StarIcon className="h-16 text-coolYellow"/>
 
                 </div> */}
-            <div className=" bg-green-900/60 md:px-20 md:pt-16 px-10 py-16 md:pb-10 flex-col  mt-36 z-auto  mx-auto ">
+            <div className=" bg-black rounded-[4px] md:px-20 md:pt-16 px-10 py-16 md:pb-10 flex-col  mt-36 z-auto  mx-auto ">
                 {/* <img className="-z-[10] h-auto absolute w-auto" src="https://cdn.discordapp.com/attachments/839784544798638090/1105585019411505233/pexels-pixabay-164634.jpg" alt="newsletter background image"/> */}
                 <div className="flex justify-center">
-                    <h1 className="text-coolYellowFocus text-3xl font-serif font-extrabold">JOIN OUR MAILING LIST</h1>
+                    <h1 className="text-yellow-600 text-3xl font-serif font-extrabold">JOIN OUR MAILING LIST</h1>
 
                 </div>
 
