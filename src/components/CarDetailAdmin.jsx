@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 
 import React, { useState, useEffect, useContext } from "react";
 import { db, storage } from "../../firestore";
-import { addDoc, collection, getDocs, serverTimestamp } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, serverTimestamp, where } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
@@ -18,6 +18,7 @@ import { VscGear } from "react-icons/vsc";
 import CarCardMain from "../components/CarCardMain";
 import  Modal  from '@mui/material/Modal';
 import Box from '@mui/material/Box';
+import CarCardAdmin from "./CarCardAdmin";
 
 const CarDetailAdmin = () => {
     const [cars, setCars] = useContext(FetchedCarsContext);
@@ -31,6 +32,7 @@ const CarDetailAdmin = () => {
   const [transmission, setTransmission] = useState("");
   const [mileage, setMileage] = useState("");
   const [price, setPrice] = useState("");
+  const [filteredCars, setFilteredCars] = useState([]);
   const { data: session } = useSession();
 
 
@@ -95,6 +97,9 @@ const CarDetailAdmin = () => {
       console.error("Error uploading images:", error);
     }
   };
+  const toggleModal = () => {
+    setOpen(true);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -130,9 +135,26 @@ const CarDetailAdmin = () => {
     console.log("The images", images);
   }, []);
 
-  const toggleModal = () => {
-    setOpen(true);
-  };
+
+  useEffect(() => {
+    const fetchCars = async () => {
+      const carsCollection = collection(db, 'cars');
+
+      const carsQuery = query(carsCollection, where('username', '==', session.user.username));
+
+      const carsSnapshot = await getDocs(carsQuery);
+      const carsData = carsSnapshot.docs.map((doc) => doc.data());
+
+      // Process the fetched cars data
+
+      setFilteredCars(carsData);
+      console.log("Filtered cars", filteredCars)
+    };
+
+    fetchCars();
+
+  }, [session]);
+  
   return (
     <div>
         <Navbar link="dashboard"/>
@@ -212,6 +234,13 @@ const CarDetailAdmin = () => {
 
         </Modal>
 
+
+    {
+        filteredCars.map((car) => (
+
+            <CarCardAdmin title={car.make} images={car.images} fuel={car.fuel} mileage={car.mileage} transmission={car.transmission} id={car.id} model={car.model}/>
+        ))
+    }
     </div>
   );
 }

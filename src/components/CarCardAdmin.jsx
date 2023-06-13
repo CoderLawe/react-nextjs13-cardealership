@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AiOutlineClockCircle } from "react-icons/ai"
+import { VscGear } from "react-icons/vsc";
+import { BsFillFuelPumpFill } from "react-icons/bs";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { CarDataContext, CardIdContext } from './context/CarCardContext';
 
-function CarCardAdmin() {
+function CarCardAdmin({type, title, image, price, fuel, mileage, transmission, id, model, images }) {
+
+    const router = useRouter();
+
+    const [carId, setCardId] = useContext(CardIdContext);
+    const [carData, setCarData] = useContext(CarDataContext);
+
+    const handleCardClick = () => {
+        router.push(`/${id}`);
+
+        setCardId(id)
+        setCarData({type, title, image, price, fuel, mileage, transmission, id, model, images})
+      };
+      
   return (
 <div className="block shadow-lg rounded-[18px] px-3 py-5">
         <div className="relative">
@@ -65,7 +84,8 @@ function CarCardAdmin() {
             </Link>
 
         </div>
-    </div>  )
+    </div>
+      )
 }
 
 export default CarCardAdmin
