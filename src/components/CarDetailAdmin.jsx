@@ -15,6 +15,9 @@ import { useSession } from "next-auth/react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { BsFillFuelPumpFill } from "react-icons/bs";
 import { VscGear } from "react-icons/vsc";
+import CarCardMain from "../components/CarCardMain";
+import  Modal  from '@mui/material/Modal';
+import Box from '@mui/material/Box';
 
 const CarDetailAdmin = () => {
     const [cars, setCars] = useContext(FetchedCarsContext);
@@ -25,8 +28,22 @@ const CarDetailAdmin = () => {
   const [uploading, setUploading] = useState(false);
   const [open, setOpen] = useState(false);
   const [id, setId] = useState("");
-  const { data: session } = useSession()
+  const [transmission, setTransmission] = useState("");
+  const [mileage, setMileage] = useState("");
+  const [price, setPrice] = useState("");
+  const { data: session } = useSession();
 
+
+  const style = {
+    position: 'absolute',
+    top: '40%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    boxShadow: 24,
+  
+  
+  }
 
   
   useEffect(() => {
@@ -40,14 +57,20 @@ const CarDetailAdmin = () => {
     getCars();
   }, [cars]);
 
-  const toggleModal = () => {
-    setOpen(true);
-  };
+  
 
   useEffect(() => {
     console.log("Images", images);
   }, [images]);
   
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+  
+    setOpen(false);
+  };
 
   const handleImageUpload = async (e) => {
     const files = e.target.files;
@@ -78,7 +101,7 @@ const CarDetailAdmin = () => {
     try {
       setUploading(true);
       const carRef = await addDoc(collection(db, "cars"), {
-        type,
+        // type,
         make,
         model,
         year,
@@ -107,10 +130,88 @@ const CarDetailAdmin = () => {
     console.log("The images", images);
   }, []);
 
+  const toggleModal = () => {
+    setOpen(true);
+  };
   return (
     <div>
         <Navbar link="dashboard"/>
-      
+
+
+        <button className="mt-[100px]" onClick={toggleModal}>Add Car</button>
+
+        {/* Modal start */}
+    
+        <Modal 
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        >
+            <Box 
+            sx={style}
+            className="bg-white text-gray-800 focus:outline-none"
+            >
+
+                <div className="bg-black/[85%] py-[5px] px-10 block">
+                    <div className="flex justify-center">
+                        <p className="text-gray-400 font-[500] text-[25px]">Enter your info here</p>
+                    </div>
+                    <form className="block">    
+                        <div className="grid grid-cols-2 gap-x-[10px] gap-y-[15px]">
+
+                        <input
+                        type="text"
+                        id="make"
+                        placeholder="Car Make"
+                        name="make"
+                        value={make}
+                        onChange={(e) => setMake(e.target.value) }
+                        />
+
+
+                    <input
+                        type="text"
+                        id="make"
+                        placeholder="Car model"
+                        name="model"
+                        value={model}
+                        onChange={(e) => setModel(e.target.value) }
+                        />
+
+
+                    <input value={year} placeholder="year" onChange={(e) => setYear(e.target.value)}/>
+
+                    <input value={transmission} placeholder="transmission" onChange={(e) => setTransmission(e.target.value)}/>
+                    <input value={mileage} placeholder="mileage" onChange={(e) => setMileage(e.target.value)}/>
+                    <input value={price} placeholder="price" onChange={(e) => setPrice(e.target.value)}/>
+
+                        <input
+                        type="file"
+                        id="images"
+                        name="images"
+                        multiple
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        />                        
+
+
+                        </div>  
+                      
+
+
+                        <div className="flex justify-center mt-[30px]">
+                         <button  onClick={handleSubmit} type="submit" className="bg-green-900 h-[40px] w-[100px] text-gray-200 relative -bottom-[40%]">Place Inquiry</button>
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </Box>
+
+        </Modal>
+
     </div>
   );
 }
