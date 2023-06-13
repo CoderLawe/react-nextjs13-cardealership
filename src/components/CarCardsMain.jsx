@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import CarCardMain from './CarCardMain';
 import Filters from './Filters';
 import FiltersNew from "./FiltersNew";
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, subcollection } from 'firebase/firestore';
 import { db } from '../../firestore';
-import { FetchedCarsContext, FilteredCarsContext, MakeFilterContext, ModelFilterContext, PriceRangeFilterContext, SearchingContext, YearFilterContext } from './context/CarCardContext';
+import { CardIdContext, FetchedCarsContext, FilteredCarsContext, MakeFilterContext, ModelFilterContext, PriceRangeFilterContext, SearchingContext, YearFilterContext } from './context/CarCardContext';
 
 function CarCardsMain() {
   const [cars, setCars] = useContext(FetchedCarsContext);
@@ -18,18 +18,27 @@ const [yearFilter, setYearFilter] = useContext(YearFilterContext);
 const [priceRange, setPriceRange] = useContext(PriceRangeFilterContext);
 
 const [searching, setSearching] = useContext(SearchingContext);
+const [orders, setOrders] = useState([]);
+const [carId, setCarId] = useContext(CardIdContext);
 
-  useEffect(() => {
-    const getCars = async () => {
-      const querySnapshot = await getDocs(collection(db, 'cars'));
-      const carsList = querySnapshot.docs.map((doc) => doc.data());
-      setCars(carsList);
-      console.log("cars", cars);
-    };
-  
-    getCars();
-    // setCars([{make:"Jeep", model:"Liberty",id:"12345"}])
-  }, []);
+
+useEffect(() => {
+  const fetchData = async () => {
+    const carsSnapshot = await getDocs(collection(db, 'cars'));
+    const carsData = carsSnapshot.docs.map((doc) => {
+      const data = doc.data();
+      const id = doc.id;
+      setCarId(id);
+      return { id, ...data };
+    });
+
+    setCars(carsData);
+  };
+
+  fetchData();
+  console.log("orders", cars.orders)
+}, []);
+
 
   useEffect(() => {
     console.log("make filter", makeFilter)
@@ -53,18 +62,18 @@ const [searching, setSearching] = useContext(SearchingContext);
           !searching ?
           cars?.map((car) => (
             <CarCardMain
-              key={car.id}
-              title={car.make}
-              model={car.model}
-              transmission={car.transmission}
-              year={car.year}
-              mileage={car.mileage}
-              image={car.image}
-              fuel={car.fuel}
-              images={car.images}
-              type={car.type}
-              price={car.price}
-              id={car.id}
+              key={car?.id}
+              title={car?.make}
+              model={car?.model}
+              transmission={car?.transmission}
+              year={car?.year}
+              mileage={car?.mileage}
+              image={car?.image}
+              fuel={car?.fuel}
+              images={car?.images}
+              type={car?.type}
+              price={car?.price}
+              id={car?.id}
             />
           )):(
             filteredCars?.map((car) => (

@@ -2,21 +2,31 @@ import { useState } from 'react';
 import { AiOutlineCheckCircle, AiOutlineClockCircle } from 'react-icons/ai';
 import { BsFillPinFill } from 'react-icons/bs';
 import { TbManualGearbox } from "react-icons/tb";
+import OrderPlaceModal from './OrderPlaceModal';
 
 function DetailGallery({ car, images }) {
 
 
     const [selectedImage, setSelectedImage] = useState(images?images[0]:"");
+    const [counter, setCounter] = useState();
+    const [open, setOpen] = useState(false);
 
-    const [counter, setCounter] = useState()
     const handleImageClick = (image) => {
       setSelectedImage(image);
     };
   
 
-
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+    
+      setOpen(false);
+    };
     return (
       <div className=" px-[24px] pt-[100px] block lg:flex bg-gray-100">
+
+  <OrderPlaceModal open={open} handleClose={handleClose}/>
 
         {/* Left side */}
         <div className="lg:w-[800px] block">
@@ -108,7 +118,7 @@ function DetailGallery({ car, images }) {
 
               <div className="flex justify-center">
                 <div className="block space-y-[20px]">
-                  <button className="h-[40px] w-[256px] text-gray-100 mx-[16px] mt-[25px]  text-[12px]  cursor-pointer bg-black hover:bg-white hover:text-gray-900 hover:border hover:border-black transform transition-all duration-300 ease-out">Make an offer</button>
+                  <button onClick={() => setOpen(true)} className="h-[40px] w-[256px] text-gray-100 mx-[16px] mt-[25px]  text-[12px]  cursor-pointer bg-black hover:bg-white hover:text-gray-900 hover:border hover:border-black transform transition-all duration-300 ease-out">Make an offer</button>
 
                 </div>
                 

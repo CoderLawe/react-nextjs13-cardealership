@@ -13,9 +13,11 @@ function ElectronicsCardsMain() {
       {/* <FiltersNew /> */}
     </div>
     <div className="grid lg:grid-cols-3 gap-x-[28px] gap-y-[44.01px] mt-[40px]">
-      <ElectronicsCardMain />
-      <ElectronicsCardMain />
-      <ElectronicsCardMain />
+      <ElectronicsCardMain discount="14" title="Ipad Pro Case" price="22,000" was="50,000" image="https://m.media-amazon.com/images/I/3145szSi9kL._AC_SY200_.jpg"/>
+      <ElectronicsCardMain discount="20" title="Ipad Pro Case" price="22,000" was="50,000" image="https://m.media-amazon.com/images/I/41WkAu6UJLL._AC_SY200_.jpg" />
+      <ElectronicsCardMain discount="24" title="Ipad Pro Case" price="22,000" was="50,000"  image="https://m.media-amazon.com/images/I/31eQG-gVTXL._AC_SY200_.jpg"/>
+
+     
 
     </div>
      

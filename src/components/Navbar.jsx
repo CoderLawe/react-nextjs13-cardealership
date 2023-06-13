@@ -6,7 +6,7 @@ import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { BsMenuButton } from "react-icons/bs";
 import { GiCarKey } from "react-icons/gi";
 const Navbar = ({ link }) => {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
  
   return (

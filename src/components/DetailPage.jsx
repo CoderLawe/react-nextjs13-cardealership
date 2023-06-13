@@ -12,13 +12,13 @@ import {
 } from "@/components/context/CarCardContext";
 import DetailGallery from "@/components/DetailGallery";
 import Navbar from "@/components/Navbar";
+import OrderPlaceModal from "./OrderPlaceModal";
 
 
 function DetailPage() {
     const [carId, setCarId] = useContext(CardIdContext);
   const [car, setCar] = useState({});
   const [carData, setCarData] = useContext(CarDataContext);
-
   // useEffect(() => {
     
   //   const getData = async (carId) => {
